@@ -1,0 +1,239 @@
+.slide-in {
+  z-index: 10; /* to position it in front of the other content */
+  position: absolute;
+  overflow: hidden; /* to prevent scrollbar appearing */
+}
+
+
+.slide-in.from-right {
+  position: absolute;
+  right: 0;
+  top:0;
+  z-index: -1;
+
+
+}
+
+.slide-in-content {
+  padding: 5px 20px;
+  background: rgba(12, 9, 9, 0.51);
+  transition: transform .5s ease; /* our nice transition */
+  display: flex;
+  justify-content: center;
+  backdrop-filter: blur(6px)
+
+
+}
+
+
+.slide-in.from-right .slide-in-content {
+  transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+
+}
+
+.slide-in.show .slide-in-content {
+  transform: translateX(0);
+  -webkit-transform: translateX(0);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+
+}
+
+.slide-in.from-right.show {
+  z-index: 3;
+  position: fixed;
+
+}
+
+.container-form {
+  margin-top: 30px;
+  width: 75%;
+  height: 75%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(11, 12, 12, 0.22);
+  border-radius: 0.5rem;
+  box-shadow: 3.5px 3.5px 4px 2px rgba(0, 0, 0, 0.3);
+  /* border: 1px solid rgb(89, 250, 156); */
+  border-top: 2px solid rgb(241, 238, 238);
+  border-bottom: 2px solid rgb(241, 238, 238);
+
+
+}
+
+.comment-form {
+  height: 100%;
+}
+
+.form-form {
+  height: 50%;
+  display: flex;
+  flex-flow: column;
+  gap: 15px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.form-sentence {
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+
+.row-input {
+  width: 100%;
+  position: relative;
+}
+
+[type="text"], [id="name"], [id="surname"], [type="number"] {
+  width: 100%;
+  height: 20px;
+  border-radius: 5px;
+  border: 1px solid #0a0a08;
+  margin-top: 10px;
+  background-color: #f1eeee;
+  color: #03040e;
+  transition: background-color 300ms linear;
+  -webkit-transition: background-color 300ms linear;
+  -ms-transition: background-color 300ms linear;
+  -o-transition: background-color 300ms linear;
+  -ms-transition: background-color 300ms linear;
+  font-weight: bold;
+}
+
+.input-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  z-index: 1;
+  width: 100%;
+
+}
+
+.label-name {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 5px;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #03040e;
+  letter-spacing: 0.1em;
+  transform: translateY(-5px);
+  transition: transform 200ms ease-in-out;
+}
+
+.input-field:focus ~ .input-label .label-name,
+.input-field:not(:placeholder-shown) ~ .input-label .label-name {
+  color: #f1eeee;
+  font-weight: 400;
+  font-size: 0.85rem;
+  transform: translateY(-30px);
+  letter-spacing: normal;
+
+}
+
+.input-field:focus,
+.input-field:not(:placeholder-shown) {
+  outline: none;
+  border-color: rgb(59, 2, 2);
+  border-width: 1px;
+  color: #0a0a08;
+}
+
+.form-control {
+  position: relative;
+  font-family: system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 1.1;
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+  color: white;
+}
+
+input[type="checkbox"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  appearance: none;
+  /* For iOS < 15 to remove gradient background */
+  background-color: #fff;
+  /* Not removed via appearance */
+  margin: 0;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+}
+
+.form-control + .form-control {
+  margin-top: 1em;
+}
+
+input[type="checkbox"] {
+  display: grid;
+  place-content: center;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.90em;
+  height: 0.90em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em #2fc935;
+  transform-origin: bottom left;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%)
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+input[type="checkbox"]::before {
+  /* ...existing styles */
+
+  /* Windows High Contrast Mode */
+  background-color: #2fc935;
+}
+
+.form-submit {
+  width: 100%;
+  height: 15%;
+
+}
+
+.submit {
+  width: 100%;
+  height: 90px;
+  background-color: rgb(29, 136, 210);
+  color: #f1eeee;
+  border-style: none;
+  border-radius: 5px;
+  font-size: 20px;
+  font-family: Helvetica, Arial, sans-serif;;
+
+}
+
+.submit:hover {
+  background-color: #35d01c;
+  color: black;
+
+}

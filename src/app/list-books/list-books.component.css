@@ -1,0 +1,12 @@
+#grid-books {
+  padding-top: 25px;
+  z-index: 0;
+  display: grid;
+  transition: transform 15s ease;
+  width: 100%;
+  column-gap: 10px;
+  row-gap: 10px;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(4, 1fr);
+}

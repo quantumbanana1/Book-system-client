@@ -1,0 +1,31 @@
+.header {
+  justify-content: space-between;
+  display: flex;
+  background: white;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+
+}
+
+#deleteBtn > button {
+  height: 50px;
+  background-color: darkred;
+  color: white;
+  border-radius: 20px;
+  border-style: none;
+  font-weight: bolder;
+
+}
+
+#deleteBtn {
+  z-index: 1;
+}
+
+.header > div {
+  color: black;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 25px;
+
+}
