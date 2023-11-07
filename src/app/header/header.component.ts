@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {EditElementService} from "../edit-element.service";
 
 @Component({
   selector: 'app-header',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+
+  constructor(private editElementService: EditElementService) {
+
+
+  }
+
+  deleteAllMessagesClick() {
+    this.editElementService.deleteAllMessagesClick();
+  }
+
+
+
 
 }

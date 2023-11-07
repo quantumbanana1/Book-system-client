@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {LibraryService} from "../library.service";
 import {IBook} from "../IBook";
 import {of, Subscription} from "rxjs";
+import {EditElementService} from "../edit-element.service";
 
 @Component({
   selector: 'app-list-books',
@@ -12,7 +13,9 @@ export class ListBooksComponent implements OnInit{
 
   public books: IBook[] = [];
 
-  constructor(private library:LibraryService) {
+  constructor(private library:LibraryService, private editService: EditElementService) {
+
+
   }
 
 
@@ -20,6 +23,26 @@ export class ListBooksComponent implements OnInit{
     this.library.getAllBooks().subscribe(values => {
       this.books = values;
     })
+
+     this.editService.deleteAllMessagesEvent.subscribe( e => {
+       this.books = [];
+     } );
+
+
+     this.editService.EditEvent.subscribe(id => {
+         this.editBooksArray(id);
+
+     })
+
+
+
+  }
+
+
+  editBooksArray(id:number) {
+      const newSetOfBooks = this.books.filter(book => book.id !== id);
+      this.books = newSetOfBooks;
+      console.log(newSetOfBooks);
   }
 
 }
