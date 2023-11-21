@@ -5,7 +5,7 @@
   <div id="Gcompleted_pages">{{book?.completedPages}}<span></span></div>
   <div id="buttonsMenu">
     <button #buttonDelete (click)="deleteBook(book?.id)" id="dlt-btn1">delete</button>
-    <button id="edit-btn1">edit</button>
+    <button (click)="showEditForm()" id="edit-btn1">edit</button>
     <button id="completion-btn1">status</button>
   </div>
   <div id="status"><span id="barProgress1"></span><span>{{book?.completed}}</span></div></div>

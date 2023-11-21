@@ -1,0 +1,274 @@
+.row-input {
+    width: 100%;
+    position: relative;
+}
+
+[type="text"], [id="name"], [id="surname"], [type="number"] {
+    width: 100%;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid #0a0a08;
+    margin-top: 10px;
+    background-color: #f1eeee;
+    color: #03040e;
+    transition: background-color 300ms linear;
+    -webkit-transition: background-color 300ms linear;
+    -ms-transition: background-color 300ms linear;
+    -o-transition: background-color 300ms linear;
+    -ms-transition: background-color 300ms linear;
+    font-weight: bold;
+}
+
+.input-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    z-index: 1;
+    width: 100%;
+
+}
+
+.label-name {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #03040e;
+    letter-spacing: 0.1em;
+    transform: translateY(-5px);
+    transition: transform 200ms ease-in-out;
+}
+
+.input-field:focus ~ .input-label .label-name,
+.input-field:not(:placeholder-shown) ~ .input-label .label-name {
+    color: #f1eeee;
+    font-weight: 400;
+    font-size: 0.85rem;
+    transform: translateY(-30px);
+    letter-spacing: normal;
+
+}
+
+.input-field:focus,
+.input-field:not(:placeholder-shown) {
+    outline: none;
+    border-color: rgb(59, 2, 2);
+    border-width: 1px;
+    color: #0a0a08;
+}
+
+.form-control {
+    position: relative;
+    font-family: system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 1.1;
+    display: grid;
+    grid-template-columns: 1em auto;
+    gap: 0.5em;
+    color: white;
+}
+
+input[type="checkbox"] {
+    /* Add if not using autoprefixer */
+    -webkit-appearance: none;
+    appearance: none;
+    /* For iOS < 15 to remove gradient background */
+    background-color: #fff;
+    /* Not removed via appearance */
+    margin: 0;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+}
+
+.form-control + .form-control {
+    margin-top: 1em;
+}
+
+input[type="checkbox"] {
+    display: grid;
+    place-content: center;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.90em;
+    height: 0.90em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em #2fc935;
+    transform-origin: bottom left;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%)
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+input[type="checkbox"]::before {
+    /* ...existing styles */
+
+    /* Windows High Contrast Mode */
+    background-color: #2fc935;
+}
+
+.form-submit {
+    width: 100%;
+    height: 15%;
+
+}
+
+.submit {
+    width: 100%;
+    height: 90px;
+    background-color: rgb(29, 136, 210);
+    color: #f1eeee;
+    border-style: none;
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: Helvetica, Arial, sans-serif;;
+
+}
+
+.submit:hover {
+    background-color: #35d01c;
+    color: black;
+
+}
+
+.editContainer {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    background-color: rgba(5, 5, 5, 0.67);
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid rgb(89, 250, 156); */
+    transform: scale(0);
+    transition: opacity .35s, transform .35s;
+
+
+}
+
+.editContainer.show {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+    z-index: 99;
+}
+
+
+.header-edit-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+}
+
+.header-edit-form >  .form-sentence {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    padding-left: 20px;
+}
+
+
+
+.header-edit-form > button{
+    justify-content: center;
+    display: flex;
+    width: 30px;
+    height: 30px;
+    border-style: none;
+    background-color: rgba(109, 42, 42, 0);
+    border-radius: 100%;
+
+
+
+}
+
+.header-edit-form > button > img {
+    width: 30px;
+    height: 30px;
+}
+
+
+
+.container-form-edit {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 70%;
+    border-top: 2px solid rgb(241, 238, 238);
+    border-bottom: 2px solid rgb(241, 238, 238);
+    border-radius: 0.5rem;
+    background-color: rgba(10, 10, 8, 0.43);
+    box-shadow: 3.5px 3.5px 4px 2px rgba(0, 0, 0, 0.3);
+
+
+}
+
+.container-form-edit > .comment-form-edit {
+    width: 50%;
+    height: 70%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.form-form {
+    height: 50%;
+    display: flex;
+    flex-flow: column;
+    gap: 15px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.container-form-edit > .comment-form-edit > .form-form {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+}
+.editContainer.unactive {
+    background-color: rgba(255, 255, 255, 0);
+    z-index: -3;
+    position: absolute;
+    right: 0;
+    left: 0;
+}
+
+.row-input-edit {
+    width: 100%;
+    position: relative;
+}
+
+.comment-form {
+    height: 100%;
+}

@@ -1,5 +1,5 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
-import {Observable, of} from "rxjs";
+import {BehaviorSubject, Observable, of} from "rxjs";
 import {IBook} from "./IBook";
 import {LibraryService} from "./library.service";
 
@@ -14,10 +14,17 @@ export class EditElementService {
   @Output() deleteAllMessagesEvent = new EventEmitter<any>()
   @Output() EditEvent = new EventEmitter<number>()
 
+  private showElementBehaviour = new BehaviorSubject<boolean>(false);
+  notifyObservables = this.showElementBehaviour.asObservable()
+
+  public ShowFormBehabiour = new BehaviorSubject<boolean>(false);
+  notifyShowFormObservables = this.ShowFormBehabiour.asObservable();
+
+  public ShowBookArray = new BehaviorSubject<IBook | {}>({});
+  notifyListBooks = this.ShowBookArray.asObservable();
+
 
   deleteAllMessagesClick() {
-
-    console.log("dziala")
     this.deleteAllMessagesEvent.emit(
          this.library.deleteAllBooks()
     )
@@ -30,6 +37,18 @@ export class EditElementService {
   }
 
 
+  EditFormVisibility(state:boolean) {
+    this.showElementBehaviour.next(state);
+
+  }
 
 
+  FormVisibility(state:boolean) {
+    return this.ShowFormBehabiour.next(state);
+  }
+
+  editArrayBooks(date : IBook) {
+    return this.ShowBookArray.next(date);
+
+  }
 }

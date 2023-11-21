@@ -1,0 +1,22 @@
+{
+  "books": [
+    {
+      "title": "W kręgu Crome",
+      "authorName": "Aldous",
+      "authorSurname": "Huxley",
+      "pages": 230,
+      "completedPages": 64,
+      "completed": false,
+      "id": 1
+    },
+    {
+      "title": "Atlas Shrugged",
+      "authorName": "Ayn",
+      "authorSurname": "Rand",
+      "pages": 1435,
+      "completedPages": 84,
+      "completed": false,
+      "id": 2
+    }
+  ]
+}

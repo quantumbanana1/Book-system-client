@@ -1,13 +1,3 @@
 {
-  "books": [
-    {
-      "title": "Atlas Shrugged",
-      "authorName": "Ayn",
-      "authorSurname": "Rand",
-      "pages": 1435,
-      "completedPages": 84,
-      "completed": false,
-      "id": 2
-    }
-  ]
+  "books": []
 }

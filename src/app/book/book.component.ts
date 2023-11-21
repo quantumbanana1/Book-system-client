@@ -32,4 +32,10 @@ export class BookComponent {
     )
 
   }
+
+
+  showEditForm() {
+    this.editService.EditFormVisibility(true);
+  }
+
 }

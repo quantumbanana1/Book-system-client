@@ -73,4 +73,14 @@ export class LibraryService {
       )
   }
 
+
+  addBook(data:IBook): Observable<IBook> {
+    return this.http.post<IBook>(this.url, data).pipe(
+      tap(response => {console.log("You have added a new book")}),
+      catchError(this.handleError<IBook>('addBook', data))
+
+    );
+    
+  }
+
 }

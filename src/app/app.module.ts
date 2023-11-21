@@ -13,8 +13,9 @@ import { BottomContainerComponent } from './bottom-container/bottom-container.co
 import { FormBookComponent } from './form-book/form-book.component';
 import {NgOptimizedImage} from "@angular/common";
 import { SearchBoxComponent } from './search-box/search-box.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from "@angular/common/http";
+import { EditFormComponent } from './edit-form/edit-form.component';
 
 
 @NgModule({
@@ -28,14 +29,16 @@ import {HttpClientModule} from "@angular/common/http";
     ContainerComponent,
     BottomContainerComponent,
     FormBookComponent,
-    SearchBoxComponent
+    SearchBoxComponent,
+    EditFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgOptimizedImage,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

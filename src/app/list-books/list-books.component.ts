@@ -34,6 +34,17 @@ export class ListBooksComponent implements OnInit{
 
      })
 
+     this.editService.notifyListBooks.subscribe(res => {
+      this.library.getAllBooks().subscribe(books => {
+        this.books = books;
+      })
+
+     })
+
+     
+
+
+
 
 
   }
