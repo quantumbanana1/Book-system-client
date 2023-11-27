@@ -1,3 +1,76 @@
 {
-  "books": []
+  "books": [
+    {
+      "title": "W kręgu Crome",
+      "authorName": "Aldous",
+      "authorSurname": "Huxley",
+      "pages": 230,
+      "completedPages": 64,
+      "completed": false,
+      "id": 1
+    },
+    {
+      "title": "Atlas Shrugged",
+      "authorName": "Ayn",
+      "authorSurname": "Rand",
+      "pages": 1435,
+      "completedPages": 84,
+      "completed": false,
+      "id": 2
+    },
+    {
+      "title": "sdsd",
+      "authorName": "sdsd",
+      "authorSurname": "dsds",
+      "pages": 122,
+      "completedPages": "2",
+      "completed": true,
+      "id": 3
+    },
+    {
+      "title": "sdsdsd",
+      "authorName": "sdsdsd",
+      "authorSurname": "dsdsd",
+      "pages": 2,
+      "completedPages": "2",
+      "completed": true,
+      "id": 4
+    },
+    {
+      "title": "sdsdsd",
+      "authorName": "sdsdsd",
+      "authorSurname": "dsdsd",
+      "pages": 2,
+      "completedPages": "2",
+      "completed": true,
+      "id": 5
+    },
+    {
+      "title": "sdsdsd",
+      "authorName": "sdsdsd",
+      "authorSurname": "dsdsd",
+      "pages": 2,
+      "completedPages": "2",
+      "completed": true,
+      "id": 6
+    },
+    {
+      "title": "sdsdsd",
+      "authorName": "sdsdsd",
+      "authorSurname": "dsdsd",
+      "pages": 2,
+      "completedPages": "2",
+      "completed": true,
+      "id": 7
+    },
+    {
+      "title": "sdsdsd",
+      "authorName": "sdsdsd",
+      "authorSurname": "dsdsd",
+      "pages": 2,
+      "completedPages": "2",
+      "completed": false,
+      "id": 8
+    }
+  ]
 }

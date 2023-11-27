@@ -3,6 +3,13 @@ import {BehaviorSubject, Observable, of} from "rxjs";
 import {IBook} from "./IBook";
 import {LibraryService} from "./library.service";
 
+
+export interface  IAction <T extends string> {
+  book: IBook,
+  action: T
+
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,6 +29,9 @@ export class EditElementService {
 
   public ShowBookArray = new BehaviorSubject<IBook | {}>({});
   notifyListBooks = this.ShowBookArray.asObservable();
+
+  public showNewBookStats = new BehaviorSubject<IAction<"addedBook" | "deletedBook" > | {}>({});
+  notifyBookStats = this.showNewBookStats.asObservable();
 
 
   deleteAllMessagesClick() {
@@ -49,6 +59,15 @@ export class EditElementService {
 
   editArrayBooks(date : IBook) {
     return this.ShowBookArray.next(date);
+
+  }
+
+  editBookStats(state: IAction<"addedBook" | "deletedBook">) {
+
+    if (state) {
+      return this.showNewBookStats.next(state)
+    }
+
 
   }
 }

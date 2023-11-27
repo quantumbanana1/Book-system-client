@@ -69,11 +69,20 @@ export class FormBookComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.bookForm.value)
-    return this.library.addBook(this.bookForm.value).subscribe(
+    const book = {
+      title: this.bookForm.value.title,
+      authorName: this.bookForm.value.name,
+      authorSurname: this.bookForm.value.surname,
+      pages: this.bookForm.value.pages,
+      completedPages: this.bookForm.value.completedPages,
+      completed: this.bookForm.value.bookCompletion,}
+    console.log(this.bookForm.value.surname);
+
+    return this.library.addBook(book).subscribe(
       response => {
         console.log('Book added succesfully')
-        this.editService.editArrayBooks(response);
+        this.editService.editArrayBooks(response)
+        this.editService.editBookStats({book: book, action: "addedBook"});
         
       },
       error => {
