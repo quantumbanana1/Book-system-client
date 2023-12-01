@@ -21,7 +21,6 @@ export class BookComponent {
 
     if (id === undefined) {
       console.log("Deleting process failed....");
-      console.log("111")
       return;
     }
 
@@ -34,8 +33,8 @@ export class BookComponent {
   }
 
 
-  showEditForm() {
-    this.editService.EditFormVisibility(true);
+  showEditForm(id:number) {
+    this.editService.EditFormVisibility(true,id);
   }
 
 }

@@ -32,6 +32,7 @@ export class ListBooksComponent implements OnInit{
      this.editService.EditEvent.subscribe(id => {
          this.editBooksArray(id);
 
+
      })
 
      this.editService.notifyListBooks.subscribe(res => {

@@ -4,9 +4,10 @@ import {IBook} from "./IBook";
 import {LibraryService} from "./library.service";
 
 
-export interface  IAction <T extends string> {
-  book: IBook,
-  action: T
+export interface  IAction {
+  book?: IBook,
+  id?: number,
+  action: "addedBook" | "deletedBook" | "editedBook";
 
 }
 
@@ -21,7 +22,7 @@ export class EditElementService {
   @Output() deleteAllMessagesEvent = new EventEmitter<any>()
   @Output() EditEvent = new EventEmitter<number>()
 
-  private showElementBehaviour = new BehaviorSubject<boolean>(false);
+  private showElementBehaviour = new BehaviorSubject<[boolean,number]>([false,0]);
   notifyObservables = this.showElementBehaviour.asObservable()
 
   public ShowFormBehabiour = new BehaviorSubject<boolean>(false);
@@ -30,7 +31,7 @@ export class EditElementService {
   public ShowBookArray = new BehaviorSubject<IBook | {}>({});
   notifyListBooks = this.ShowBookArray.asObservable();
 
-  public showNewBookStats = new BehaviorSubject<IAction<"addedBook" | "deletedBook" > | {}>({});
+  public showNewBookStats = new BehaviorSubject<IAction | {}>({});
   notifyBookStats = this.showNewBookStats.asObservable();
 
 
@@ -44,11 +45,16 @@ export class EditElementService {
 
   editBooks(id:number) {
      this.EditEvent.emit(id);
+     const state: IAction = {id: id,
+       action: "deletedBook",
+     }
+    this.editBookStats(state);
+
   }
 
 
-  EditFormVisibility(state:boolean) {
-    this.showElementBehaviour.next(state);
+  EditFormVisibility(state:boolean, id:number) {
+    this.showElementBehaviour.next([state,id]);
 
   }
 
@@ -62,7 +68,7 @@ export class EditElementService {
 
   }
 
-  editBookStats(state: IAction<"addedBook" | "deletedBook">) {
+  editBookStats(state: IAction) {
 
     if (state) {
       return this.showNewBookStats.next(state)

@@ -16,18 +16,21 @@ export class SidebarComponent implements OnInit{
   public books : number = 0;
   public completedBooks : number = 0;
   public totalPages : number = 0;
+  private arrayBooks: IBook[];
 
 
 
   ngOnInit(): void {
 
     this.libraryService.getAllBooks().subscribe((books) => {
+      this.arrayBooks = books;
       this.sumProperties(books);
     })
 
 
-    this.editService.notifyBookStats.subscribe((state:IAction<"addedBook" | "deletedBook"> ) => {
+    this.editService.notifyBookStats.subscribe((state:IAction) => {
     this.editProperties(state);
+    this.updateArrayBooks();
 
     })
     
@@ -44,7 +47,8 @@ export class SidebarComponent implements OnInit{
 
   }
 
-  editProperties(state) {
+  editProperties(state :IAction) {
+    console.log(state);
 
     if (state.action === "addedBook") {
       this.books += 1;
@@ -55,6 +59,21 @@ export class SidebarComponent implements OnInit{
 
     }
 
+    if (state.action === "deletedBook") {
+      const book = this.arrayBooks.find(book => book.id === state.id);
+      this.books -= 1;
+      if (book.completed) {
+        this.completedBooks -=1;
+      }
+      this.totalPages -= book.pages
+    }
+
+  }
+
+  updateArrayBooks(): void {
+    this.libraryService.getAllBooks().subscribe((books) => {
+      this.arrayBooks = books;
+    })
   }
 
 
