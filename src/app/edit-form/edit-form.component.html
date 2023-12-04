@@ -6,39 +6,41 @@
                 <img src="assets/photo/button.svg">
             </button>
         </div>
-        <form id="commentform-edit" class="comment-form" method="#">
+        <form [formGroup]="editForm" (ngSubmit)="onSubmit()" id="commentform-edit" class="comment-form" method="#">
             <div class="form-form">
                 <div class="row-input-edit">
-                    <input type="hidden" id="bookId" name="bookId" value="">
-                    <input id="name-edit" class="input-field" name="name" type="text" value=""
-                           pattern="^[^0-9]+$" size="30" maxlength="245" placeholder=" " required>
-                    <label class="input-label" for="name-edit">
+                    <input  type="hidden" id="bookId" name="bookId" value="{{book?.id}}">
+                </div>
+                <div class="row-input">
+                    <input formControlName="authorName" id="name" class="input-field" name="name" type="text" value=""
+                           pattern="^[^0-9]+$" size="30" maxlength="245" placeholder=" " >
+                    <label class="input-label" for="name">
                         <span class="label-name">Name</span>
                     </label>
                 </div>
                 <div class="row-input-edit">
-                    <input class="input-field" id="surname-edit" placeholder=" " name="surname" type="text"
+                    <input formControlName="authorSurname" class="input-field" id="surname-edit" placeholder=" " name="surname" type="text"
                            value="" size="30" maxlength="245" required>
                     <label class="input-label" for="surname-edit" data-help="A girl has no name- Arya Stark">
                         <span class="label-name">Surname</span>
                     </label>
                 </div>
                 <div class="row-input-edit">
-                    <input class="input-field" id="title-edit" placeholder=" " name="Title" type="text"
+                    <input formControlName="title" class="input-field" id="title-edit" placeholder=" " name="Title" type="text"
                            value="" size="30" maxlength="100" aria-describedby="email-notes" required>
                     <label class="input-label" for="title-edit">
                         <span class="label-name">Title</span>
                     </label>
                 </div>
                 <div class="row-input-edit">
-                    <input class="input-field" type="number" id="pages-edit" placeholder=" " name="Pages"
+                    <input formControlName="pages" class="input-field" type="number" id="pages-edit" placeholder=" " name="Pages"
                            required>
                     <label class="input-label" for="pages-edit">
                         <span class="label-name">Pages</span>
                     </label>
                 </div>
                 <div class="row-input-edit">
-                    <input class="input-field" type="number" id="completed_pages-edit" placeholder=" "
+                    <input formControlName="completedPages" class="input-field" type="number" id="completed_pages-edit" placeholder=" "
                            name="completed_pages" required>
                     <label class="input-label" for="completed_pages-edit">
                         <span class="label-name">Completed Pages</span>
@@ -46,12 +48,12 @@
                 </div>
                 <div class="row-input-read">
                     <label class="form-control">
-                        <input id="bookCompletion-edit" type="checkbox" name="checkbox"/>
+                        <input formControlName="completed" id="bookCompletion-edit" type="checkbox" name="checkbox"/>
                         Read?
                     </label>
                 </div>
                 <div class="form-submit">
-                    <input  name="submit" type="submit" id="EditSubmit" class="submit" value="Edit">
+                    <input  name="submit" [disabled]="editForm.invalid" type="submit" id="EditSubmit" class="submit" value="Edit">
                 </div>
             </div>
         </form>

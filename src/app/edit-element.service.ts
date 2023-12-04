@@ -1,29 +1,29 @@
-import {EventEmitter, Injectable, Output} from '@angular/core';
-import {BehaviorSubject, Observable, of} from "rxjs";
-import {IBook} from "./IBook";
-import {LibraryService} from "./library.service";
+import { EventEmitter, Injectable, Output } from "@angular/core";
+import { BehaviorSubject, Observable, of } from "rxjs";
+import { IBook } from "./IBook";
+import { LibraryService } from "./library.service";
 
-
-export interface  IAction {
-  book?: IBook,
-  id?: number,
+export interface IAction {
+  book?: IBook;
+  id?: number;
   action: "addedBook" | "deletedBook" | "editedBook";
-
+  changedKeys?: string[];
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class EditElementService {
+  constructor(private library: LibraryService) {}
 
-  constructor(private library: LibraryService) { }
+  @Output() deleteAllMessagesEvent = new EventEmitter<any>();
+  @Output() EditEvent = new EventEmitter<number>();
 
-
-  @Output() deleteAllMessagesEvent = new EventEmitter<any>()
-  @Output() EditEvent = new EventEmitter<number>()
-
-  private showElementBehaviour = new BehaviorSubject<[boolean,number]>([false,0]);
-  notifyObservables = this.showElementBehaviour.asObservable()
+  private showElementBehaviour = new BehaviorSubject<[boolean, number | null]>([
+    false,
+    null,
+  ]);
+  notifyObservables = this.showElementBehaviour.asObservable();
 
   public ShowFormBehabiour = new BehaviorSubject<boolean>(false);
   notifyShowFormObservables = this.ShowFormBehabiour.asObservable();
@@ -34,46 +34,30 @@ export class EditElementService {
   public showNewBookStats = new BehaviorSubject<IAction | {}>({});
   notifyBookStats = this.showNewBookStats.asObservable();
 
-
   deleteAllMessagesClick() {
-    this.deleteAllMessagesEvent.emit(
-         this.library.deleteAllBooks()
-    )
-
+    this.deleteAllMessagesEvent.emit(this.library.deleteAllBooks());
   }
 
-
-  editBooks(id:number) {
-     this.EditEvent.emit(id);
-     const state: IAction = {id: id,
-       action: "deletedBook",
-     }
-    this.editBookStats(state);
-
+  editBooks(id: number) {
+    this.EditEvent.emit(id);
   }
 
-
-  EditFormVisibility(state:boolean, id:number) {
-    this.showElementBehaviour.next([state,id]);
-
+  EditFormVisibility(state: boolean, id?: number) {
+    console.log(state, id);
+    this.showElementBehaviour.next([state, id]);
   }
 
-
-  FormVisibility(state:boolean) {
+  FormVisibility(state: boolean) {
     return this.ShowFormBehabiour.next(state);
   }
 
-  editArrayBooks(date : IBook) {
+  editArrayBooks(date: IBook) {
     return this.ShowBookArray.next(date);
-
   }
 
   editBookStats(state: IAction) {
-
     if (state) {
-      return this.showNewBookStats.next(state)
+      return this.showNewBookStats.next(state);
     }
-
-
   }
 }
