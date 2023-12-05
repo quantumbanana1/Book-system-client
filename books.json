@@ -4,17 +4,17 @@
       "title": "W kręgu Crome",
       "authorName": "Aldous",
       "authorSurname": "Huxley",
-      "pages": 230,
-      "completedPages": 64,
+      "pages": 0,
+      "completedPages": 12,
       "completed": false,
       "id": 1
     },
     {
-      "title": "Atlas Shrugged",
+      "title": "Atlas Shruggedss",
       "authorName": "Ayn",
       "authorSurname": "Rand",
-      "pages": 143,
-      "completedPages": 84,
+      "pages": 12,
+      "completedPages": 0,
       "completed": false,
       "id": 2
     }

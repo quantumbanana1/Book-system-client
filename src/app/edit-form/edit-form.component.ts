@@ -3,7 +3,6 @@ import { EditElementService } from "../edit-element.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { LibraryService } from "../library.service";
 import { IBook } from "../IBook";
-import { Observable, Subscription } from "rxjs";
 import { pageValidator } from "../form-book/form-book.component";
 
 @Component({
@@ -80,13 +79,7 @@ export class EditFormComponent implements OnInit {
       Object.entries(book).forEach(([key, value]) => {
         if (value !== this.book[key]) {
           notChanged = false;
-          if (
-            key === "completed" ||
-            key === "pages" ||
-            key === "completedPages"
-          ) {
-            changedKeys.push(key);
-          }
+          changedKeys.push(key);
         }
       });
     }
@@ -101,6 +94,8 @@ export class EditFormComponent implements OnInit {
             changedKeys: changedKeys,
             id: this.book.id,
           });
+
+          this.editService.editBook(book);
         });
     } else {
       return 0;

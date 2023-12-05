@@ -34,6 +34,9 @@ export class EditElementService {
   public showNewBookStats = new BehaviorSubject<IAction | {}>({});
   notifyBookStats = this.showNewBookStats.asObservable();
 
+  public showEditedBook = new BehaviorSubject<IBook | {}>({});
+  notifyBook = this.showEditedBook.asObservable();
+
   deleteAllMessagesClick() {
     this.deleteAllMessagesEvent.emit(this.library.deleteAllBooks());
   }
@@ -59,5 +62,9 @@ export class EditElementService {
     if (state) {
       return this.showNewBookStats.next(state);
     }
+  }
+
+  editBook(book: IBook) {
+    return this.showEditedBook.next(book);
   }
 }
