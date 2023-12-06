@@ -1,5 +1,5 @@
-<div *ngIf="isShown" [class.show]="isShown" class="editContainer">
-    <div class="container-form-edit">
+<div [@inOutAnimation]="'in'" *ngIf="isShown" [class.show]="isShown" class="editContainer">
+    <div  class="container-form-edit">
         <div class="header-edit-form">
             <h1 class="form-sentence">Edit Book</h1>
             <button (click)="hideForm()" id="exitBtn">

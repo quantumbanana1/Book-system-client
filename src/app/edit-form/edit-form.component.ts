@@ -4,11 +4,13 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { LibraryService } from "../library.service";
 import { IBook } from "../IBook";
 import { pageValidator } from "../form-book/form-book.component";
+import { popOut } from "../animations";
 
 @Component({
   selector: "app-edit-form",
   templateUrl: "./edit-form.component.html",
   styleUrls: ["./edit-form.component.css"],
+  animations: [popOut],
 })
 export class EditFormComponent implements OnInit {
   public isShown = false;
@@ -96,6 +98,7 @@ export class EditFormComponent implements OnInit {
           });
 
           this.editService.editBook(book);
+          this.hideForm();
         });
     } else {
       return 0;

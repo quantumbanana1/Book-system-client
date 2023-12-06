@@ -1,10 +1,10 @@
-<div class="book ">
+<div [@fade]="isHidden ? 'hidden' : 'visible'" class="book ">
   <div id="titleMenu">Title: {{book?.title}} <span></span></div>
   <div id="authorMenu">Author:{{book?.authorName}} {{book?.authorSurname}} <span></span></div>
   <div id="pages-amount">Pages:{{book?.pages}} <span></span></div>
   <div id="Gcompleted_pages">{{book?.completedPages}}<span></span></div>
   <div id="buttonsMenu">
-    <button #buttonDelete (click)="deleteBook(book?.id)" id="dlt-btn1">delete</button>
+    <button  (click)="deleteBook(book?.id)" id="dlt-btn1">delete</button>
     <button (click)="showEditForm(book?.id)" id="edit-btn1">edit</button>
     <button id="completion-btn1">status</button>
   </div>
