@@ -247,6 +247,7 @@ input[type="checkbox"]::before {
     display: flex;
     flex-flow: column;
     gap: 15px;
+
     font-family: Helvetica, Arial, sans-serif;
 }
 
