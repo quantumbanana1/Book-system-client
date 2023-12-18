@@ -1,8 +1,8 @@
-<div *ngIf="isShown" [class.show]="isShown" class="slide-in from-right">
-  <div class="slide-in-content">
+<div [@slideOutAnimation] *ngIf="isShown" [class.show]="isShown" class="slide-in from-right">
+  <div  class="slide-in-content">
     <div class="container-form">
       <h1 class="form-sentence">Add New Book</h1>
-      <form [formGroup]="bookForm" (ngSubmit)="onSubmit()" id="commentform" class="comment-form" method="post">
+      <form [formGroup]="bookForm" #formDirective="ngForm" (ngSubmit)="onSubmit()" id="commentform" class="comment-form" method="post">
         <div class="form-form">
           <div class="row-input">
             <input formControlName="name" id="name" class="input-field" name="name" type="text" value=""

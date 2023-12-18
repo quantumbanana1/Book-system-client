@@ -101,7 +101,7 @@ export class EditFormComponent implements OnInit {
           this.hideForm();
         });
     } else {
-      return 0;
+      return "Nothing changed";
     }
   }
 }

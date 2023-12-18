@@ -1,16 +1,17 @@
-import { Component, OnInit } from "@angular/core";
+import {Component, OnInit, ViewChild} from "@angular/core";
 import { EditElementService } from "../edit-element.service";
 import {
   AbstractControl,
   FormBuilder,
   FormControl,
-  FormGroup,
+  FormGroup, NgForm,
   ReactiveFormsModule,
   ValidationErrors,
   ValidatorFn,
 } from "@angular/forms";
 import { Validators } from "@angular/forms";
 import { LibraryService } from "../library.service";
+import { slideOutAnimation } from "../animations";
 
 export function pageValidator(
   control: AbstractControl,
@@ -27,11 +28,12 @@ export function pageValidator(
   selector: "app-form-book",
   templateUrl: "./form-book.component.html",
   styleUrls: ["./form-book.component.css"],
-  // imports: [ReactiveFormsModule],
+  animations: [slideOutAnimation],
 })
 export class FormBookComponent implements OnInit {
   public isShown = false;
   bookForm: FormGroup;
+  @ViewChild('formDirective') private formDirective: NgForm;
 
   constructor(
     private library: LibraryService,
@@ -42,10 +44,8 @@ export class FormBookComponent implements OnInit {
   ngOnInit(): void {
     this.editService.notifyShowFormObservables.subscribe((res) => {
       if (res) {
-        console.log(1);
         this.isShown = true;
       } else {
-        console.log(2);
         this.isShown = false;
       }
     });
@@ -56,7 +56,7 @@ export class FormBookComponent implements OnInit {
         surname: ["", [Validators.required]],
         title: ["", [Validators.required]],
         pages: ["", [Validators.required]],
-        completedPages: ["2", [Validators.required]],
+        completedPages: ["", [Validators.required]],
         bookCompletion: [false, [Validators.required]],
       },
       { validators: [pageValidator] },
@@ -77,6 +77,9 @@ export class FormBookComponent implements OnInit {
       (response) => {
         this.editService.editArrayBooks(response);
         this.editService.editBookStats({ book: book, action: "addedBook" });
+        this.editService.FormVisibility(false);
+        this.formDirective.resetForm();
+        // this.bookForm.reset();
       },
       (error) => {
         console.error(`Error adding book:`, error);

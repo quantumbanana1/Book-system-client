@@ -51,3 +51,13 @@ export const popOut = trigger("inOutAnimation", [
     ),
   ]),
 ]);
+
+export const slideOutAnimation = trigger("slideOutAnimation", [
+  transition(":enter", [
+    style({ opacity: 0, transform: "translateX(100%)" }),
+    animate(".75s ease", style({ opacity: 1, transform: "translateX(*)" })),
+  ]),
+  transition(":leave", [
+    animate(".75s ease", style({ opacity: 0, transform: "translateX(100%)" })),
+  ]),
+]);

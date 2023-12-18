@@ -6,8 +6,26 @@
       "authorSurname": "Huxley",
       "pages": 230,
       "completedPages": 64,
-      "completed": true,
+      "completed": false,
       "id": 1
+    },
+    {
+      "title": "Atlas Shrugged",
+      "authorName": "Ayn",
+      "authorSurname": "Rand",
+      "pages": 1435,
+      "completedPages": 84,
+      "completed": false,
+      "id": 2
+    },
+    {
+      "title": "nowa ksiazka",
+      "authorName": "Aldous",
+      "authorSurname": "Huxley",
+      "pages": 123,
+      "completedPages": 22,
+      "completed": false,
+      "id": 3
     }
   ]
 }
