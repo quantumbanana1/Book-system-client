@@ -41,45 +41,11 @@ export class SearchBoxComponent implements AfterViewInit {
     this.setUpSearchObservable().subscribe((value) => {
       this.library.getAllBooks().subscribe((books: IBook[]) => {
         this.books = books;
-        if (value.toLowerCase() === this.searchResult.toLowerCase()) {
+        if (value.toLowerCase() === this.searchResult) {
           return;
         } else {
           this.searchResult = value.toLowerCase();
-          const searchResultCleared = this.searchResult.replace(/\s+/g, " ");
-          const splittedValue = searchResultCleared.split(" ");
-          console.log(this.books);
-          const filteredArray = this.books.filter((book: IBook) => {
-            if (searchResultCleared === book.title.toLowerCase()) {
-              return book;
-            } else if (
-              splittedValue.includes(book.authorName.toLowerCase()) &&
-              splittedValue.includes(book.authorSurname.toLowerCase())
-            ) {
-              return book;
-            } else if (
-              splittedValue.includes(book.authorName.toLowerCase()) &&
-              !splittedValue.includes(book.authorSurname.toLowerCase())
-            ) {
-              return book;
-            } else if (
-              !splittedValue.includes(book.authorName.toLowerCase()) &&
-              splittedValue.includes(book.authorSurname.toLowerCase())
-            ) {
-              return book;
-            } else if (
-              splittedValue.some((value) =>
-                book.title
-                  .toLowerCase()
-                  .replace(/\s+/g, " ")
-                  .split(" ")
-                  .includes(value),
-              )
-            ) {
-              return book;
-            } else {
-              return null;
-            }
-          });
+          this.editService.filterArray(this.searchResult);
         }
       });
     });

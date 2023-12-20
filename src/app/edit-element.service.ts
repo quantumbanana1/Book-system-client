@@ -37,7 +37,7 @@ export class EditElementService {
   public showEditedBook = new BehaviorSubject<IBook | {}>({});
   notifyBook = this.showEditedBook.asObservable();
 
-  public showFilteredArray = new BehaviorSubject<number>(0)
+  public showFilteredArray = new BehaviorSubject<string>("");
   notifyToFilter = this.showFilteredArray.asObservable();
 
   deleteAllMessagesClick() {
@@ -71,8 +71,7 @@ export class EditElementService {
     return this.showEditedBook.next(book);
   }
 
-
-  filterArray(id:number) {
-    return this.showFilteredArray.next(id);
+  filterArray(value: string) {
+    return this.showFilteredArray.next(value);
   }
 }
