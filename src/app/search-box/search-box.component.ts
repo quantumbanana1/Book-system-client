@@ -39,15 +39,12 @@ export class SearchBoxComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.setUpSearchObservable().subscribe((value) => {
-      this.library.getAllBooks().subscribe((books: IBook[]) => {
-        this.books = books;
-        if (value.toLowerCase() === this.searchResult) {
-          return;
-        } else {
-          this.searchResult = value.toLowerCase();
-          this.editService.filterArray(this.searchResult);
-        }
-      });
+      if (value.toLowerCase() === this.searchResult) {
+        return;
+      } else {
+        this.searchResult = value.toLowerCase();
+        this.editService.filterArray(this.searchResult);
+      }
     });
   }
 }
